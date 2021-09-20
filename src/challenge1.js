@@ -1,6 +1,10 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 
+
+
+  
+ 
 let fiveDiscounts =0 ;
 let fourDiscounts= 0  ;
 let threeDiscounts = 0;
@@ -90,8 +94,24 @@ function basketCost(basket) {
      
      });
  }
+
+ let discountAdjustment =  0;
+ function adjustment (){
+  if ( fiveDiscounts >= 1 && threeDiscounts >= 1){
+    if( fiveDiscounts >= threeDiscounts){
+      discountAdjustment = threeDiscounts;
+    }
+    else if ( fiveDiscounts < threeDiscounts){
+      discountAdjustment = fiveDiscounts;
+    }
+   
+     }
+ }
+ adjustment ();
+//  Math.abs(fiveDiscounts - threeDiscounts)
+
  
- totalCost =( (fiveDiscounts * (8 * 0.75 *5)) + (fourDiscounts * (8*0.80 * 4)) +(threeDiscounts * (8*0.90 * 3) )+ (twoDiscounts * (8*0.95 * 2)+ oneCost));
+ totalCost =( (fiveDiscounts * (8 * 0.75 *5)) + (fourDiscounts * (8*0.80 * 4)) +(threeDiscounts * (8*0.90 * 3) )+ (twoDiscounts * (8*0.95 * 2)+ oneCost) - discountAdjustment* 0.4);
   return totalCost;
  
  }
